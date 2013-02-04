@@ -1,0 +1,11 @@
+import json
+import urllib2
+import datetime
+
+temp = datetime.datetime(1, 1, 1)
+
+mdta_data = json.load(urllib2.urlopen('https://data.maryland.gov/api/views/rqid-652u/rows.json'))
+
+last_updated = mdta_data['meta']['view']['publicationDate']
+
+print (datetime.datetime.fromtimestamp(last_updated).strftime('%Y-%m-%d %H:%M:%S'))
